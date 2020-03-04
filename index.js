@@ -20,7 +20,7 @@ import PropTypes from 'prop-types';
 const ViewPropTypes = RNViewPropTypes || View.propTypes;
 export const DURATION = { 
     LENGTH_SHORT: 500,
-    FOREVER: 0,
+    FOREVER: Infinity,
 };
 
 const {height, width} = Dimensions.get('window');
@@ -49,6 +49,7 @@ export default class Toast extends Component {
             {
                 toValue: this.props.opacity,
                 duration: this.props.fadeInDuration,
+                useNativeDriver: true,
             }
         )
         this.animation.start(() => {
@@ -70,6 +71,8 @@ export default class Toast extends Component {
                 {
                     toValue: 0.0,
                     duration: this.props.fadeOutDuration,
+                    useNativeDriver: true,
+
                 }
             )
             this.animation.start(() => {
